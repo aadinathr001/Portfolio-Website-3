@@ -129,7 +129,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               {/* Photo Frame */}
               <div className="relative aspect-[4/5] overflow-hidden bg-[#f0f0eb] border border-[#e6e6e1]">
                 <img
-                  src="/aadinath_photo.png"
+                  // src="/public/assets/images/hero.jpg"
+                  src={PORTFOLIO_CONFIG.PROFILE_IMAGE}
                   alt={NAME}
                   className="w-full h-full object-cover object-center grayscale contrast-[1.05] hover:grayscale-0 transition-all duration-700"
                 />
