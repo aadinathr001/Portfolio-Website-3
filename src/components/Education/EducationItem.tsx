@@ -27,10 +27,10 @@ export const EducationItem: React.FC<EducationItemProps> = ({
       {/* Column 1 & 2: Timeline Guide + Years */}
       <div className="md:col-span-3 flex items-start gap-4 sm:gap-5 relative">
         {/* Node & High-Contrast Continuous Vertical Spine */}
-        <div className="relative flex flex-col items-center shrink-0 w-5">
+        <div className="relative flex flex-col items-center shrink-0 w-5 self-stretch">
           {!isLast && (
             <div
-              className="w-[2px] bg-[#121212] absolute top-4 bottom-[-3rem] left-[9px] z-0"
+              className="w-[2px] bg-[#121212] absolute top-4 bottom-0 md:bottom-[-3.75rem] left-[9px] z-0"
               aria-hidden="true"
             />
           )}
@@ -52,7 +52,9 @@ export const EducationItem: React.FC<EducationItemProps> = ({
 
         <div className="text-[12px] font-mono tracking-wider text-[#4a4a44] uppercase leading-tight pt-1">
           <div className="font-semibold text-[#121212]">{startYear}</div>
-          {endYear && <div className="text-[#787870] font-normal">— {endYear}</div>}
+          {endYear && (
+            <div className="text-[#787870] font-normal">— {endYear}</div>
+          )}
         </div>
       </div>
 
@@ -71,7 +73,9 @@ export const EducationItem: React.FC<EducationItemProps> = ({
           </h3>
 
           <div className="flex flex-wrap items-center gap-2 text-xs sm:text-[13px] text-[#555550] mb-2">
-            <span className="font-semibold text-[#121212]">{education.institution}</span>
+            <span className="font-semibold text-[#121212]">
+              {education.institution}
+            </span>
             <span className="text-[#b5b5ac]">·</span>
             <span className="font-mono uppercase text-[11px] tracking-wider text-[#7a7a72]">
               {education.location}
@@ -114,8 +118,13 @@ export const EducationItem: React.FC<EducationItemProps> = ({
                 </div>
                 <ul className="space-y-2.5">
                   {education.highlights.map((highlight, hIdx) => (
-                    <li key={hIdx} className="flex items-start gap-2.5 text-sm text-[#444440] leading-relaxed">
-                      <span className="text-[#c26d52] font-mono text-xs mt-0.5 select-none font-bold">—</span>
+                    <li
+                      key={hIdx}
+                      className="flex items-start gap-2.5 text-sm text-[#444440] leading-relaxed"
+                    >
+                      <span className="text-[#c26d52] font-mono text-xs mt-0.5 select-none font-bold">
+                        —
+                      </span>
                       <span>{highlight}</span>
                     </li>
                   ))}

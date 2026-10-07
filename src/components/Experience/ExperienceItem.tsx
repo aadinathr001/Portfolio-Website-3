@@ -29,11 +29,10 @@ export const ExperienceItem: React.FC<ExperienceItemProps> = ({
       {/* Column 1 & 2: Timeline Guide + Years (Left) */}
       <div className="md:col-span-3 flex items-start gap-4 sm:gap-5 relative">
         {/* Node & High-Contrast Continuous Vertical Spine */}
-        <div className="relative flex flex-col items-center shrink-0 w-5">
-          {/* Unbroken Vertical Spine Line */}
+        <div className="relative flex flex-col items-center shrink-0 w-5 self-stretch">
           {!isLast && (
             <div
-              className="w-[2px] bg-[#121212] absolute top-4 bottom-[-3rem] left-[9px] z-0"
+              className="w-[2px] bg-[#121212] absolute top-4 bottom-0 md:bottom-[-3.75rem] left-[9px] z-0"
               aria-hidden="true"
             />
           )}

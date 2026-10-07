@@ -28,6 +28,11 @@
   background-size: 48px 48px;
 }
 
+/* When the interactive canvas grid is active, hide the static CSS grid */
+.has-warp-grid .bg-architectural-grid {
+  background-image: none;
+}
+
 /* Swiss Typographic Hierarchy Classes:
    H1: Manrope 800 (64-80px)
    H2: Manrope 700 (40-52px)

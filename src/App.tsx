@@ -18,6 +18,7 @@ import { Chatbot } from "./components/Chatbot/Chatbot";
 import { KeyboardShortcuts } from "./components/KeyboardShortcuts";
 import { CaseStudyPage } from "./components/CaseStudy/CaseStudyPage";
 import { usePathname, matchProjectRoute, restoreHomeScroll } from "./utils/router";
+import { InteractiveBackground } from "./components/InteractiveBackground";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("about");
@@ -70,7 +71,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-architectural-grid text-[#121212] selection:bg-[#c26d52]/15 selection:text-[#121212]">
+    <div className="isolate relative min-h-screen bg-architectural-grid text-[#121212] selection:bg-[#c26d52]/15 selection:text-[#121212]">
+      <InteractiveBackground />
       {projectSlugParam ? (
         <CaseStudyPage slug={projectSlugParam} />
       ) : (
