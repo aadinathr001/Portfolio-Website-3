@@ -11,33 +11,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timeStr, setTimeStr] = useState("");
 
-  // Live real-time clock for Bangalore / local time zone
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      // IST / Bangalore time format: BLR HH:MM
-      const formatted = now.toLocaleTimeString("en-GB", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-      });
-      setTimeStr(`BLR ${formatted}`);
-    };
+  // // Live real-time clock for Bangalore / local time zone
+  // useEffect(() => {
+  //   const updateTime = () => {
+  //     const now = new Date();
+  //     // IST / Bangalore time format: BLR HH:MM
+  //     const formatted = now.toLocaleTimeString("en-GB", {
+  //       timeZone: "Asia/Kolkata",
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //       hour12: false
+  //     });
+  //     setTimeStr(`BLR ${formatted}`);
+  //   };
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000 * 30);
-    return () => clearInterval(interval);
-  }, []);
+  //   updateTime();
+  //   const interval = setInterval(updateTime, 1000 * 30);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const navItems = [
-    { num: "01", label: "ABOUT", href: "#about" },
-    { num: "02", label: "PROJECTS", href: "#projects" },
-    { num: "03", label: "EXPERIENCE", href: "#experience" },
-    { num: "04", label: "EDUCATION", href: "#education" },
-    { num: "05", label: "STACK", href: "#stack" },
-    { num: "06", label: "CONTACT", href: "#contact" }
-  ];
+const navItems = [
+  { num: "01", label: "ABOUT", href: "#about" },
+  { num: "02", label: "PROJECTS", href: "#projects" },
+  { num: "03", label: "EXPERIENCE", href: "#experience" },
+  { num: "04", label: "EDUCATION", href: "#education" },
+  { num: "05", label: "CERTIFICATES", href: "#certificates" },
+  { num: "06", label: "STACK", href: "#stack" },
+  { num: "07", label: "CONTACT", href: "#contact" }
+];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -115,10 +116,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
             RESUME
           </button>
 
-          {/* Timezone / Live Clock */}
+          {/* Timezone / Live Clock
           <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-[#8a8a82]">
             <span>{timeStr || "BLR 15:47"}</span>
-          </div>
+          </div> */}
 
           {/* Mobile hamburger button */}
           <button
@@ -155,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
             })}
 
             <div className="pt-2 flex items-center justify-between text-xs font-mono text-[#888880]">
-              <span>TIME: {timeStr}</span>
+              {/* <span>TIME: {timeStr}</span> */}
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

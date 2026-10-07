@@ -264,7 +264,7 @@ export function generateLocalRAGAnswer(query: string, retrievedChunks: Knowledge
 • **GitHub**: ${PORTFOLIO_CONFIG.GITHUB}
 • **LinkedIn**: ${PORTFOLIO_CONFIG.LINKEDIN}
 • **Status**: ${PORTFOLIO_CONFIG.STATUS} in ${PORTFOLIO_CONFIG.LOCATION}.
-You can also use the contact terminal on this page!`;
+You can also copy the email directly from the contact section on this page.`;
   }
 
   // General grounded synthesis from top retrieved chunk

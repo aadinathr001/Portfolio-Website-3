@@ -5,7 +5,20 @@ import {
   PROJECTS_DATA,
   ProjectItem
 } from "../data/portfolioData";
+import { openProject } from "../utils/router";
 
+// Makes a whole card clickable, while links inside it keep working
+const cardProps = (id: string) => ({
+  role: "link",
+  tabIndex: 0,
+  onClick: (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest("a")) return;
+    openProject(id);
+  },
+  onKeyDown: (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && e.target === e.currentTarget) openProject(id);
+  },
+});
 const ALL_PROJECTS: ProjectItem[] = PROJECTS_DATA;
 const GRID_PROJECTS: ProjectItem[] = PROJECTS_DATA.slice(1, 5);
 const PROJECT_CATEGORIES: string[] = ["All", "Computer Vision", "Agentic Systems", "AI / ML", "Full-Stack"];
@@ -41,7 +54,7 @@ export const Projects: React.FC = () => {
 
         {/* Featured Case Study: Architectural Dossier */}
         <div id="featured-project" className="mb-20">
-          <div className="bg-white border border-[#e6e6e1] shadow-sm overflow-hidden">
+          <div className="group bg-white border border-[#e6e6e1] hover:border-[#121212] shadow-sm overflow-hidden cursor-pointer transition-colors">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
               {/* Left Column: Image with Field Label */}
               <div className="lg:col-span-7 relative min-h-[320px] sm:min-h-[440px] bg-[#f5f5f0] border-b lg:border-b-0 lg:border-r border-[#e6e6e1] p-6 sm:p-8 flex items-center justify-center">
@@ -132,6 +145,9 @@ export const Projects: React.FC = () => {
                     <Github className="w-3.5 h-3.5" />
                     <span>REPOSITORY</span>
                   </a>
+                  <span className="ml-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#c26d52] font-semibold group-hover:gap-2.5 transition-all">
+                    CASE STUDY <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -158,12 +174,15 @@ export const Projects: React.FC = () => {
               {GRID_PROJECTS.map((project: ProjectItem, idx: number) => (
                 <div
                   key={project.id}
-                  className="bg-white border border-[#e6e6e1] hover:border-[#121212] p-6 sm:p-7 flex flex-col justify-between transition-colors shadow-sm"
+                  className="bg-white border border-[#e6e6e1] hover:border-[#121212] p-6 sm:p-7 flex flex-col justify-between transition-colors shadow-sm group cursor-pointer"
+                  {...cardProps(project.id)}
+                  
                 >
                   <div>
                     <div className="flex items-center justify-between text-[11px] font-mono text-[#82827a] uppercase mb-4">
                       <span>REF // 0{idx + 2} · {project.category}</span>
                       <span className="text-[#c26d52] font-semibold">{project.subtitle}</span>
+                      
                     </div>
 
                     <h3 className="font-['Manrope'] font-bold text-xl sm:text-2xl text-[#121212] tracking-tight mb-3">
@@ -201,6 +220,9 @@ export const Projects: React.FC = () => {
                       <Github className="w-3.5 h-3.5" />
                       <span>CODE</span>
                     </a>
+                    <span className="inline-flex items-center gap-1 text-[#c26d52] font-semibold uppercase tracking-wider group-hover:gap-2 transition-all">
+  CASE STUDY <ArrowRight className="w-3 h-3" />
+</span>
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
@@ -211,6 +233,7 @@ export const Projects: React.FC = () => {
                         <span>DEPLOYMENT</span>
                         <ArrowUpRight className="w-3 h-3" />
                       </a>
+                      
                     )}
                   </div>
                 </div>

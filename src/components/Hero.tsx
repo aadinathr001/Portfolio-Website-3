@@ -26,15 +26,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
         {/* Top Technical Kicker Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-12 border-b border-[#e6e6e1] text-[11px] font-mono tracking-widest uppercase text-[#7a7a72]">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#c26d52]" />
-            <span className="text-[#121212] font-semibold">DOSSIER REF: AR-2026</span>
-            <span className="text-[#c0c0b8]">/</span>
-            <span>SYSTEMS & ML ENGINEERING</span>
+            {/* <span className="w-1.5 h-1.5 rounded-full bg-[#c26d52]" /> */}
+            {/* <span className="text-[#121212] font-semibold">DOSSIER REF: AR-2026</span> */}
+            {/* <span className="text-[#c0c0b8]">/</span> */}
+            {/* <span>SYSTEMS & ML ENGINEERING</span> */}
           </div>
           <div className="hidden md:flex items-center gap-4 text-[#8a8a82]">
-            <span>COORD: 12.9716° N, 77.5946° E</span>
-            <span>·</span>
-            <span>STATUS: AVAILABLE FOR SELECT COMMISSIONS</span>
+            {/* <span>COORD: 12.9716° N, 77.5946° E</span> */}
           </div>
         </div>
 

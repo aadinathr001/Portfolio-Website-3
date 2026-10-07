@@ -16,12 +16,25 @@ import { Footer } from "./components/Footer";
 import { ResumeModal } from "./components/ResumeModal";
 import { Chatbot } from "./components/Chatbot/Chatbot";
 import { KeyboardShortcuts } from "./components/KeyboardShortcuts";
-
+import { CaseStudyPage } from "./components/CaseStudy/CaseStudyPage";
+import { usePathname, matchProjectRoute, restoreHomeScroll } from "./utils/router";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("about");
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+
+  const pathname = usePathname();
+  const projectSlugParam = matchProjectRoute(pathname);
+
+  // On route change: case studies start at top, home restores where you were
+  useEffect(() => {
+    if (projectSlugParam) {
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    } else {
+      restoreHomeScroll();
+    }
+  }, [projectSlugParam]);
 
   useEffect(() => {
     const sections = [
@@ -58,55 +71,41 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-architectural-grid text-[#121212] selection:bg-[#c26d52]/15 selection:text-[#121212]">
-      {/* Dynamic Glassmorphism Fixed Navigation Bar */}
-      <Navbar
-        onOpenResume={() => setIsResumeOpen(true)}
-        activeSection={activeSection}
-      />
+      {projectSlugParam ? (
+        <CaseStudyPage slug={projectSlugParam} />
+      ) : (
+        <>
+          <Navbar
+            onOpenResume={() => setIsResumeOpen(true)}
+            activeSection={activeSection}
+          />
 
+          <main className="relative z-10">
+            <Hero onOpenResume={() => setIsResumeOpen(true)} />
+            <Projects />
+            <Experience />
+            <Education />
+            <Certificates />
+            <TechStack />
+            <Contact />
+          </main>
 
-      {/* Main Portfolio Sections */}
-      <main className="relative z-10">
-        {/* Two-Column Hero with Profile Image & 3 CTAs */}
-        <Hero onOpenResume={() => setIsResumeOpen(true)} />
+          <div className="relative z-10">
+            <Footer />
+          </div>
 
-        {/* Selected Projects: Featured Case Study + 4-Card Grid + Filterable View */}
-        <Projects />
+          <ResumeModal
+            isOpen={isResumeOpen}
+            onClose={() => setIsResumeOpen(false)}
+          />
+        </>
+      )}
 
-        {/* Interactive Experience Timeline with Summary Statistics */}
-        <Experience />
-
-        {/* Interactive Education Timeline with Academic Details */}
-        <Education />
-
-        {/* Verified Industry Certifications */}
-        <Certificates />
-
-        {/* My Tech Stack: Two-Column Explorer & Interactive Details Panel */}
-        <TechStack />
-
-        {/* Contact Terminal & Direct Channels */}
-        <Contact />
-      </main>
-
-      {/* Editorial Footer */}
-      <div className="relative z-10">
-        <Footer />
-      </div>
-
-      {/* Structured Printable Resume Modal */}
-      <ResumeModal
-        isOpen={isResumeOpen}
-        onClose={() => setIsResumeOpen(false)}
-      />
-
-      {/* Floating In-Memory RAG Chatbot */}
       <Chatbot
         isOpen={isChatbotOpen}
         onOpenChange={setIsChatbotOpen}
       />
 
-      {/* Global Keyboard Navigation (1-7 jump, C for chat, ? for help) */}
       <KeyboardShortcuts
         onOpenChatbot={() => setIsChatbotOpen(true)}
         onOpenResume={() => setIsResumeOpen(true)}
@@ -114,6 +113,3 @@ export default function App() {
     </div>
   );
 }
-
-
-

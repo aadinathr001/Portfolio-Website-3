@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
               {PORTFOLIO_CONFIG.NAME}
             </div>
             <div className="text-[11px] font-mono uppercase tracking-wider text-[#82827a]">
-              SWISS EDITORIAL PORTFOLIO // ISSUE 2026 · ALL RIGHTS RESERVED
+              {/* SWISS EDITORIAL PORTFOLIO // ISSUE 2026 · ALL RIGHTS RESERVED */}
             </div>
           </div>
 
@@ -27,8 +27,9 @@ export const Footer: React.FC = () => {
             <a href="#projects" className="hover:text-[#121212] transition-colors">02 PROJECTS</a>
             <a href="#experience" className="hover:text-[#121212] transition-colors">03 EXPERIENCE</a>
             <a href="#education" className="hover:text-[#121212] transition-colors">04 EDUCATION</a>
-            <a href="#stack" className="hover:text-[#121212] transition-colors">05 STACK</a>
-            <a href="#contact" className="hover:text-[#121212] transition-colors">06 CONTACT</a>
+            <a href="#certificates" className="hover:text-[#121212] transition-colors">05 CERTIFICATES</a>
+            <a href="#stack" className="hover:text-[#121212] transition-colors">06 STACK</a>
+            <a href="#contact" className="hover:text-[#121212] transition-colors">07 CONTACT</a>
           </div>
 
           {/* Back to top */}
