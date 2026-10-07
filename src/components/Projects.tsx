@@ -12,7 +12,7 @@ const cardProps = (id: string) => ({
   role: "link",
   tabIndex: 0,
   onClick: (e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).closest("a")) return;
+    if ((e.target as HTMLElement).closest("a, button")) return;
     openProject(id);
   },
   onKeyDown: (e: React.KeyboardEvent) => {
@@ -54,7 +54,10 @@ export const Projects: React.FC = () => {
 
         {/* Featured Case Study: Architectural Dossier */}
         <div id="featured-project" className="mb-20">
-          <div className="group bg-white border border-[#e6e6e1] hover:border-[#121212] shadow-sm overflow-hidden cursor-pointer transition-colors">
+          <div
+            className="group bg-white border border-[#e6e6e1] hover:border-[#121212] shadow-sm overflow-hidden cursor-pointer transition-colors"
+            {...cardProps(FEATURED_PROJECT.id)}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
               {/* Left Column: Image with Field Label */}
               <div className="lg:col-span-7 relative min-h-[320px] sm:min-h-[440px] bg-[#f5f5f0] border-b lg:border-b-0 lg:border-r border-[#e6e6e1] p-6 sm:p-8 flex items-center justify-center">
@@ -145,9 +148,13 @@ export const Projects: React.FC = () => {
                     <Github className="w-3.5 h-3.5" />
                     <span>REPOSITORY</span>
                   </a>
-                  <span className="ml-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#c26d52] font-semibold group-hover:gap-2.5 transition-all">
+                  <button
+                    type="button"
+                    onClick={() => openProject(FEATURED_PROJECT.id)}
+                    className="ml-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#c26d52] font-semibold group-hover:gap-2.5 transition-all cursor-pointer"
+                  >
                     CASE STUDY <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
+                  </button>
                 </div>
               </div>
             </div>
