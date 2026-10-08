@@ -475,14 +475,3 @@ export const InteractiveBackground: React.FC = () => {
 };
 
 
-//   return (
-//     <canvas
-//       ref={canvasRef}
-//       aria-hidden="true"
-//       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-//       style={{
-//         opacity: 0.95,
-//       }}
-//     />
-//   );
-// };
